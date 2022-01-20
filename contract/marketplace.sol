@@ -34,8 +34,8 @@ contract Marketplace {
     function writeProduct(
         string memory _name,
         string memory _image,
-        string memory _description, 
-        string memory _location, 
+        string memory _description,
+        string memory _location,
         uint _price
     ) public {
         uint _sold = 0;
@@ -53,37 +53,38 @@ contract Marketplace {
 
     function readProduct(uint _index) public view returns (
         address payable,
-        string memory, 
-        string memory, 
-        string memory, 
-        string memory, 
-        uint, 
+        string memory,
+        string memory,
+        string memory,
+        string memory,
+        uint,
         uint
-    ) {
+        ){
         return (
             products[_index].owner,
-            products[_index].name, 
-            products[_index].image, 
-            products[_index].description, 
-            products[_index].location, 
+            products[_index].name,
+            products[_index].image,
+            products[_index].description,
+            products[_index].location,
             products[_index].price,
             products[_index].sold
         );
     }
-    
-    function buyProduct(uint _index) public payable  {
-        require(
-          IERC20Token(cUsdTokenAddress).transferFrom(
-            msg.sender,
-            products[_index].owner,
-            products[_index].price
-          ),
-          "Transfer failed."
-        );
-        products[_index].sold++;
-    }
-    
+
     function getProductsLength() public view returns (uint) {
-        return (productsLength);
+        return productsLength;
+    }
+
+    function buyProduct(uint _index) public payable {
+        require (
+            IERC20Token(cUsdTokenAddress).transferFrom(
+                msg.sender,
+                products[_index].owner,
+                products[_index].price
+            ),
+            "Transfer Failed."
+        );
+
+        products[_index].sold++;
     }
 }
