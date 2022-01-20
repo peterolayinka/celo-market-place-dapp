@@ -1,3 +1,7 @@
+# Demo URL
+
+[Visit Demo site](https://peterolayinka.github.io/celo-market-place-dapp/)
+
 # Install
 
 ```
@@ -6,7 +10,7 @@ npm install
 
 ```
 
-or 
+or
 
 ```
 
